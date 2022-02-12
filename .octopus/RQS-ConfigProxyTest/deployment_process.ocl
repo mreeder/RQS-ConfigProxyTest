@@ -1,0 +1,13 @@
+step "Run a Script" {
+
+    action {
+        action_type = "Octopus.Script"
+        properties = {
+            Octopus.Action.RunOnServer = "true"
+            Octopus.Action.Script.ScriptBody = "Write-Host (Invoke-WebRequest http://myexternalip.com/raw -UseBasicParsing).content"
+            Octopus.Action.Script.ScriptSource = "Inline"
+            Octopus.Action.Script.Syntax = "PowerShell"
+        }
+        worker_pool = "Default Worker Pool"
+    }
+}
